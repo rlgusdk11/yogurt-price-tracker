@@ -1,0 +1,14 @@
+{
+  "id": "/",
+  "name": "그릭요거트 최저가 알리미",
+  "short_name": "요거트최저가",
+  "description": "서울우유 그릭요거트 쿠팡/네이버쇼핑 최저가를 하루 3번 알려줍니다",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2563eb",
+  "icons": [
+    { "src": "/icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}

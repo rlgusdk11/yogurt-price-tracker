@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: yogurt-price-tracker
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      - key: NAVER_CLIENT_ID
+        sync: false
+      - key: NAVER_CLIENT_SECRET
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: CONTACT_EMAIL
+        sync: false
+      - key: SEARCH_QUERY
+        value: 서울우유 그릭요거트
+      - key: SUMMARY_CRON_TIMES
+        value: 0 9,13,20 * * *
+      - key: THRESHOLD_CHECK_CRON
+        value: "*/30 * * * *"

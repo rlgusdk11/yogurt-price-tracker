@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>그릭요거트 최저가 알리미</title>
+<link rel="manifest" href="/manifest.json" />
+<meta name="theme-color" content="#2563eb" />
+<style>
+  :root {
+    --primary: #2563eb;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --danger: #dc2626;
+    --success: #16a34a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    padding-bottom: 40px;
+  }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 20px 16px 28px;
+    text-align: center;
+  }
+  header h1 { margin: 0; font-size: 20px; }
+  header p { margin: 4px 0 0; font-size: 13px; opacity: 0.85; }
+
+  main { max-width: 480px; margin: -16px auto 0; padding: 0 16px; }
+
+  .card {
+    background: var(--card);
+    border-radius: 14px;
+    padding: 16px;
+    margin-bottom: 14px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+  }
+  .lowest-price { text-align: center; padding: 8px 0; }
+  .lowest-price .amount { font-size: 34px; font-weight: 700; color: var(--primary); }
+  .lowest-price .mall { color: var(--muted); font-size: 14px; margin-top: 4px; }
+  .lowest-price a.buy-link {
+    display: inline-block; margin-top: 10px; padding: 8px 16px;
+    background: var(--primary); color: white; text-decoration: none;
+    border-radius: 8px; font-size: 14px;
+  }
+
+  .row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+  .row:last-child { border-bottom: none; }
+  .row .name { color: var(--text); }
+  .row .mall { color: var(--muted); font-size: 12px; }
+  .row .price { font-weight: 600; }
+
+  h2.section-title { font-size: 15px; margin: 0 0 10px; color: var(--text); }
+
+  .threshold-form { display: flex; gap: 8px; }
+  .threshold-form input {
+    flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px;
+  }
+  .threshold-form button, .btn {
+    padding: 10px 16px; border: none; border-radius: 8px; background: var(--primary);
+    color: white; font-size: 14px; cursor: pointer;
+  }
+  .btn.secondary { background: #e5e7eb; color: var(--text); }
+  .btn.full { width: 100%; margin-top: 8px; }
+
+  .status { font-size: 13px; color: var(--muted); margin-top: 8px; text-align: center; }
+  .status.on { color: var(--success); }
+  .status.off { color: var(--danger); }
+
+  .muted { color: var(--muted); font-size: 13px; }
+  .empty { text-align: center; color: var(--muted); padding: 20px 0; font-size: 14px; }
+</style>
+</head>
+<body>
+  <header>
+    <h1>🥛 서울우유 그릭요거트</h1>
+    <p id="query-label">최저가 알리미</p>
+  </header>
+
+  <main>
+    <div class="card lowest-price" id="lowest-card">
+      <div class="muted">불러오는 중...</div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🔔 목표가 알림 설정</h2>
+      <div class="threshold-form">
+        <input type="number" id="threshold-input" placeholder="예: 8000" />
+        <button id="threshold-save">저장</button>
+      </div>
+      <p class="muted" id="threshold-current" style="margin-top:8px;"></p>
+      <button class="btn full" id="enable-push">푸시 알림 켜기</button>
+      <div class="status" id="push-status"></div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">사이트별 현재가</h2>
+      <div id="latest-list"><div class="empty">데이터 없음</div></div>
+      <button class="btn secondary full" id="refresh-now">지금 다시 조회</button>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">최근 조회 이력</h2>
+      <div id="history-list"><div class="empty">데이터 없음</div></div>
+    </div>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
