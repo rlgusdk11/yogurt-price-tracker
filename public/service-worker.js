@@ -17,7 +17,7 @@ self.addEventListener('push', (event) => {
   event.waitUntil(
     self.registration.showNotification(data.title || '가격 알림', {
       body: data.body || '',
-      icon: '/icons/icon.svg',
+      icon: '/icons/icon-192.png',
       data: { url: data.url || '/' },
     })
   );
