@@ -1,0 +1,12 @@
+const fs = require('fs');
+const path = require('path');
+const dir = __dirname;
+const p = (n) => fs.readFileSync(path.join(dir, n), 'utf8');
+const c0 = p('chunk0.txt');
+const c1 = p('chunk1.txt');
+const c2 = p('chunk2.txt');
+console.log('lengths', c0.length, c1.length, c2.length);
+console.log('c0 start:', c0.slice(0, 20), 'end:', c0.slice(-20));
+console.log('c1 start:', c1.slice(0, 20), 'end:', c1.slice(-20));
+console.log('c2 start:', c2.slice(0, 20), 'end:', c2.slice(-20));
+console.log('c0===c1', c0 === c1, 'c1===c2', c1 === c2);
